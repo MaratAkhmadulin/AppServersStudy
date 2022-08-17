@@ -1,5 +1,10 @@
+<!DOCTYPE html>
 <html>
+<head><title> Java File Upload Servlet Example </title></head>
 <body>
-<h2>Hello World!</h2>
+<form method="get" action="choicejsppageservlet" enctype="multipart/form-data">
+ <input type="radio" name="Upload" value="one file" />one file
+ <input type="radio" name="Upload" value="two file" />two file
+ <input type="submit" name="Upload" value="Upload"/>
 </body>
 </html>
