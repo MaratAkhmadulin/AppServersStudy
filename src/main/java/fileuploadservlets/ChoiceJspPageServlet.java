@@ -1,4 +1,4 @@
-package fileUploadServlets;
+package fileuploadservlets;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

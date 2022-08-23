@@ -1,4 +1,4 @@
-package fileUploadServlets;
+package fileuploadservlets;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
