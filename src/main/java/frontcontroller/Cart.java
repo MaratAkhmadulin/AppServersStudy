@@ -1,4 +1,4 @@
-package frontcontroller.servlets;
+package frontcontroller;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
