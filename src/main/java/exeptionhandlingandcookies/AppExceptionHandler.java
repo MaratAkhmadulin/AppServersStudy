@@ -33,7 +33,7 @@ public class AppExceptionHandler extends HttpServlet {
 
     }
 
-    public Optional<Map<String, String>> readCookie(HttpServletRequest req) {
+    private Optional<Map<String, String>> readCookie(HttpServletRequest req) {
         return Optional.ofNullable(Arrays.stream(req.getCookies())
                 .collect(Collectors.toMap(Cookie::getName, Cookie::getValue)));
     }
