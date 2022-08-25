@@ -21,7 +21,6 @@ public class SignInServlet extends HttpServlet {
         } else {
             response.addCookie(new Cookie("code", "400"));
             response.sendError(400);
-            throw new ServletException("Incorrect request parameters");
         }
     }
 }
