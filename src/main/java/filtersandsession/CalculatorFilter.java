@@ -10,10 +10,10 @@ import java.io.IOException;
 public class CalculatorFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        if (!NumberUtils.isParsable(request.getParameter("Value"))) {
-            request.getRequestDispatcher("calculatorErrorPage.jsp").forward(request, response);
-        } else {
+        if (NumberUtils.isParsable(request.getParameter("Value"))) {
             chain.doFilter(request, response);
+        } else {
+            request.getRequestDispatcher("calculatorErrorPage.jsp").forward(request, response);
         }
     }
 }

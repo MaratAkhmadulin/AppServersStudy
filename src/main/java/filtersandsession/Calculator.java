@@ -9,7 +9,6 @@ import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
-import java.util.Optional;
 
 @WebServlet("/calculator")
 @Slf4j
@@ -18,17 +17,17 @@ public class Calculator extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        Double valueReq = Double.valueOf(request.getParameter("Value"));
+        double valueReq = Double.parseDouble(request.getParameter("Value"));
         HttpSession session = request.getSession();
         String jspName;
         session.setMaxInactiveInterval(60 * 10);
-        String value1 = Optional.ofNullable(session.getAttribute("value")).orElse("Not value").toString();
+        String value1 = session.getAttribute("value") == null ? "Not value" : session.getAttribute("value").toString();
         if ("Not value".equals(value1)) {
             session.setAttribute("value", valueReq);
             jspName = "calculatorValueTwo.jsp";
         } else {
-            Double sum = valueReq + (Double) session.getAttribute("value");
-            request.setAttribute("sum", sum.toString());
+            double sum = valueReq + Double.parseDouble(session.getAttribute("value").toString());
+            request.setAttribute("sum", sum);
             session.removeAttribute("value");
             jspName = "calculatorSum.jsp";
         }
