@@ -11,5 +11,9 @@
 </label>
     <button type="submit">Sign In</button>
   </form>
+  <form method="get" action="calculatorviewservlet">
+  </label>
+      <button type="submit">Calculator</button>
+    </form>
 </body>
 </html>
