@@ -6,6 +6,6 @@
         <title>Get All Products</title>
     </head>
     <body>
-            <p>Добро пожаловать, <%= request.getParameter("products") %></p>
+            <p><%= request.getAttribute("products") %></p>
         </body>
 </html>

@@ -23,10 +23,11 @@ import java.util.List;
 @Slf4j
 public class ConnectionPoolServlet extends HttpServlet {
 
-    private static DataSource getDataSource() throws NamingException {
+    private static Connection getConnection() throws NamingException, SQLException {
         Context initContext = new InitialContext();
         Context envContext = (Context) initContext.lookup("java:/comp/env");
-        return (DataSource) envContext.lookup("jdbc/TestDB");
+        DataSource dataSource = (DataSource) envContext.lookup("jdbc/TestDB");
+        return dataSource.getConnection();
     }
 
     private static List<Products> convertRSToProducts(ResultSet rs) throws SQLException {
@@ -45,7 +46,7 @@ public class ConnectionPoolServlet extends HttpServlet {
 
         List<Products> products = new ArrayList<>();
 
-        try (Connection conn = getDataSource().getConnection();
+        try (Connection conn = getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("select id, name, desc from products")) {
             products = convertRSToProducts(rs);
